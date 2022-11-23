@@ -1,3 +1,4 @@
+
 // Required packages:
 // 'eslint-config-prettier'
 // 'eslint-plugin-deprecation'
@@ -47,8 +48,6 @@ module.exports = {
     'max-classes-per-file': ['error', 3],
     'no-underscore-dangle': 'off',
     'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
-    'trailing-comma': ['error', { multiline: 'always', singleline: 'never' }],
-    semicolon: ['error', 'always'],
   },
   ignorePatterns: [
     '!**/*.eslintrc.js*',
