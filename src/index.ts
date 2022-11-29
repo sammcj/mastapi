@@ -11,14 +11,14 @@ const defaultBackupDir: string =
   (process.env.MASTODON_BACKUP_DIR as string) || `${fs.realpathSync('.')}/backups/${datestamp}`;
 const defaultAccessToken: string = process.env.MASTODON_ACCESS_TOKEN as string;
 
-// Function to show the default values for backupOrRestore, instanceUrl and accessToken and offer the user the option to change them
+// Function to show the default values for operation, instanceUrl and accessToken and offer the user the option to change them
 function run() {
   prompt.start();
   prompt.get(
     [
       {
-        name: 'backupOrRestore',
-        description: 'Backup or restore? (backup/restore)',
+        name: 'operation',
+        description: 'Operation to perform? (backup/restore)',
         default: 'backup',
       },
       {
@@ -37,7 +37,7 @@ function run() {
         console.error(err);
         return;
       } else {
-        if (result.backupOrRestore === 'backup') {
+        if (result.operation === 'backup') {
           const client = generator('mastodon', result.instanceUrl, result.accessToken);
           prompt.get(
             [
@@ -56,7 +56,7 @@ function run() {
               }
             },
           );
-        } else if (result.backupOrRestore === 'restore') {
+        } else if (result.operation === 'restore') {
           const client = generator('mastodon', result.instanceUrl, result.accessToken);
           prompt.get(
             [
