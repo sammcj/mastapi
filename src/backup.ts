@@ -53,19 +53,30 @@ export async function backup_followed_hashtags(backupDir: String, client: Megalo
 
   // Get the current followed hashtags
   // TODO: no Megalodon function yet - https://github.com/h3poteto/megalodon/issues/1472
-  async function followedHashtags() {
-    const hashtags = await client.getTagFollowing();
-    return hashtags.data;
-  }
-
+  // async function followedHashtags() {
+  //   const hashtags = await client.getTagFollowing();
+  //   return hashtags.data;
+  // }
   // Export the followed hashtags to JSON
   function backupFollowedHashtags() {
     console.log(
       followedHashtags().then((hashtagObj) => {
         const json = JSON.stringify(hashtagObj, null, 2);
 
-        fs.writeFile;
+        fs.writeFile(filePath, json, (err: any) => {
+          if (err) {
+            console.error(err);
+            return;
+          } else {
+            console.log(`Followed hashtags saved to ${filePath}`);
+          }
+        });
       }),
     );
   }
+  function run() {
+    backupFollowedHashtags();
+  }
+
+  run();
 }
