@@ -1,5 +1,8 @@
 package main
 
+// Used for importing and exporting Mastodon Filters and Tags
+// This program was written by Sam McLeod, 2022
+
 import (
 	"bufio"
 	"bytes"
